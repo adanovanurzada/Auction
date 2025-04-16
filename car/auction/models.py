@@ -60,6 +60,11 @@ class Car(models.Model):
         return f'{self.brand}, {self.seller}'
 
 
+class CarImage(models.Model):
+        Car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='images')
+        image = models.ImageField(upload_to='car_images/')
+
+
 class Auction(models.Model):
     car = models.OneToOneField(Car, on_delete=models.CASCADE)
     start_price = models.PositiveIntegerField()
